@@ -12,8 +12,8 @@ let curso = {
     anyo: 2022,
     descripcion: "Ciclo formativo de grado superior",
     alumnado: ["Pepe", "María", "Juan"],
-    matricular: ((estudiantes) => {
-        const cursoModificado = Object.assign(curso.alumnado,estudiantes);
+    matricular: ( function (estudiantes) {
+        const cursoModificado = curso.alumnado.push(`${estudiantes.nombre} ${estudiantes.apellidos}`);
         return cursoModificado;
     }),
 };

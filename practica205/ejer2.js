@@ -2,25 +2,24 @@
 
 // window.onload = temporizador;
 
-// let min = 1;
-let seg = 5;
+let minutos = 1;
+let segundos = 5;
 
 
-function temporizador(segundos) {
+function temporizador(seg) {
     let result = "";
     setInterval(() => {
-        if (segundos < 0 || segundos > 59) {
+        if (seg < 0 || seg > 59) {
             result = "ERROR. Parámetros no válidos.";
-
         }
         else {
-            console.log(segundos);
-            segundos -= 1;
-            result = segundos;
+            console.log(seg);
+            seg -= 1;
+            result = seg;
         }
     }, 1000);
 
     return result;
 }
 
-temporizador(seg);
+temporizador(segundos);
