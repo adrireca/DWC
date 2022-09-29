@@ -2,7 +2,7 @@
 
 var limite = 100000;
 let numero = 55;
-console.log(numero);
+// console.log(numero);
 
 
 //Compruebo si es primo.
@@ -14,7 +14,7 @@ function esPrimo(num){
     }
     return true;
 }
-console.log(`Primo -> ${esPrimo(numero)}`);
+// console.log(`Primo -> ${esPrimo(numero)}`);
 
 
 
@@ -23,19 +23,20 @@ function esCapicua(num){
     let numInvertido = parseInt(num.toString().split("").reverse().join(""));
     return numInvertido === num ? true : false;
 }
-console.log(`Capicua -> ${esCapicua(numero)}`);
+// console.log(`Capicua -> ${esCapicua(numero)}`);
 
 
 
-//relleno en array
+//relleno en array y muesto por consola
 function primosYcapicuas(){
+    let result = "Los números primos y, a la vez, capicua son: ";
     let numeros = [];
     for(let i=2; i<=limite; i++){
         if(esPrimo(i) && esCapicua(i)){
-            numeros.push(i);
+            result += `${numeros.push(i)}, `;
         }
     }
-    return numeros;
+    return result;
 }
 
 console.log(primosYcapicuas());
