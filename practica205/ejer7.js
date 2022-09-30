@@ -10,8 +10,8 @@ function constructorObjetos(nombre,apellidos,telefono,email,codigoPostal){
         codigoPostal: codigoPostal,
         getServidor: function () {
             let arroba = '@';
-            let i = curso.email.indexOf(arroba);
-            let servidor = curso.email.substring(i+1);
+            let i = curso.email.indexOf(arroba); //obtengo el índice del @.
+            let servidor = curso.email.substring(i+1); //Corto y muestro el string a partir de la posición siguiente al @.
             console.log(servidor);
         }
     };

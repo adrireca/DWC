@@ -1,17 +1,21 @@
 "use strict";
 
-/*
-Crea una función que reciba una letra mayúscula como parámetro y calcule cuantos DNI
-de tres cifras (del 48357001 al 48357999) tienen esa letra. Tras esto mostrará el listado de
-todos los DNI que tienen esa letra por la consola debidamente formateados de una sola
-vez sin usar un array.
-*/
-
+//imprimir dni
 const imprimirDni = (letra) => {
+    let inicio = 48357001;
+    let final = 48357999;
+    let resto = 0;
     let letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
-    let resto = dni % 23;
 
-    console.log(letras[resto]);
+    for(let i=inicio; i<final; i++){
+        resto = i % 23;
+        
+        //Muestro el dni si coincide la letra del array que recorro con la letra que introduzco por parámetro.
+        if(letras[resto] === letra){
+            console.log(`${i}${letra}`);
+        }
+    }
+    
 
 }
 
