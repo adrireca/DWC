@@ -17,15 +17,15 @@ function comprobarSudoku(tablero) {
     for (var j = 0; j < tablero[i].length; j++) {
         for (var k = j + 1; k < tablero.length; k++) {
         if (tablero[i][j] == tablero[i][k]) {
-          console.log('H', tablero[i][j], i+'-'+j, i+'-'+k)
+            console.log(`Valor repetido -> ${tablero[i][j]} - Fila -> ${i} - Columna ${j}`);
             return false;
         }
         if (tablero[j][i] == tablero[k][i]) {
-            console.log('V', tablero[j][i], j+'-'+i, k+'-'+i)
+            console.log(`Valor repetido -> ${tablero[i][j]} - Fila -> ${i} - Columna ${j}`);
             return false;
         }
         if (tablero[Math.floor(i/3) * 3 + Math.floor(j/3)][i%3 * 3 + j%3] == tablero[Math.floor(i/3) * 3 + Math.floor(k/3)][i%3 * 3 + k%3]) {
-          console.log('C', tablero[Math.floor(i/3) * 3 + Math.floor(j/3)][i%3 * 3 + j%3], (Math.floor(i/3) * 3 + Math.floor(j/3))+'-'+ (i%3 * 3 + j%3), (Math.floor(i/3) * 3 + Math.floor(k/3))+'-'+(i%3 * 3 + k%3));
+            console.log(`Valor repetido -> ${tablero[i][j]} - Fila -> ${i} - Columna ${j}`);
             return false;
         }
       }
