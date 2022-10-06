@@ -1,16 +1,13 @@
 import React from "react";
-import "./App.css";
 
-function Actor() {
-  const actor = {
-    nombre: "ffff",
-    foto: "ggggg",
-    biografia: "ddddd",
-  }
+function Actor(props) {
+
   return (
     <React.Fragment>
-        <div>
-            <p>{actor}</p>
+        <div className="actor">
+          <p>{props.nombre}</p>
+          <p><img src={props.foto} alt="actor"></img></p>
+          <p>{props.children}</p>
         </div>
     </React.Fragment>
   );
