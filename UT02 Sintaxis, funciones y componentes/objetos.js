@@ -3,21 +3,21 @@
 /******** OBJETOS *******/
 
 /*** Definición de objetos (propiedades)*/
-// var nadie = {};
-// var persona = {
-//   nombre: "Feo",
-//   apellido1: "De Verdad",
-//   direccion: {
-//     // Puede haber JSON anidados.
-//     calle: "La de siempre",
-//     numero: 5,
-//     telefono: 123456789,
-//   },
-//   aficiones: ["Videojuegos"],
-// }; // Todo objeto JSON finaliza con un punto y coma ( ; ).
+var nadie = {};
+var persona = {
+  nombre: "Feo",
+  apellido1: "De Verdad",
+  direccion: {
+    // Puede haber JSON anidados.
+    calle: "La de siempre",
+    numero: 5,
+    telefono: 123456789,
+  },
+  aficiones: ["Videojuegos"],
+}; // Todo objeto JSON finaliza con un punto y coma ( ; ).
 
-// console.log(nadie);
-// console.log(persona);
+console.log(nadie);
+console.log(persona);
 
 /*** Acceso a las propiedades */
 
@@ -43,7 +43,7 @@ console.log(persona.getNombreCompleto()); // Ejecuto la función e imprimo su de
 
 /*** Constructores de objetos */
 
-function creaPersona(nom, ape1) {
+/* function creaPersona(nom, ape1) {
   return {
     nombre: nom,
     apellido1: ape1,
@@ -68,7 +68,7 @@ function creaPersona(nom, ape1) {
 var persona2 = creaPersona("Feo", "De Verdad");
 var persona3 = creaPersona("Bruce", "Wayne");
 console.log(persona2.saluda(persona3)); // Hola Bruce Wayne
-console.log(persona2.saluda({})); // Hola colega
+console.log(persona2.saluda({})); // Hola colega */
 
 /*** Recorrer objetos con for in */
 

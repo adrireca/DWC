@@ -4,14 +4,12 @@
 
 /*** Declaración de funciones declaración */
 
-/*
 function doblar(num1) {
   var res = num1 * 2;
   return `El resultado es ${res}`;
 }
 
 console.log(doblar(151));
-*/
 
 /*** Parámetros predeterminados */
 
@@ -62,17 +60,15 @@ console.log(`El valor de beta es ${beta}`); */
 
 /*** El pseudoarray (objeto iterable) arguments */
 
-function sumarB() {
+/* function sumarB() {
   var total = 0;
   for (var i = 0; i < arguments.length; i++) {
     total += arguments[i];
   }
   return total;
-}
+} */
 
-console.log(sumarB(4, 5, 4, 7));
-
-/*
+/* console.log(sumarB(4, 5, 4, 7));
 var s = 1;
 var idTimeout = setTimeout(() => {
   let idHola = setInterval(() => {
