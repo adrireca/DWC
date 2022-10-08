@@ -7,8 +7,8 @@ function Actor(props) {
       {/* Componente actor. */}
         <div className="actor">
           <p>{props.nombre}</p>
-          <p><img src={props.foto} alt="actor"></img></p>
-          <p>{props.children}</p> {/* Paso biografía como children. */}
+          <img src={props.foto} alt="actor"></img>
+          <p className="biografia">{props.children}</p>
         </div>
     </React.Fragment>
   );

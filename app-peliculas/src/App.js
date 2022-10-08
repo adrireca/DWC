@@ -5,6 +5,7 @@ import Actor from "./ejercicio2/Actor";
 
 function App() {
 
+  //Objeto película.
   const objeto = {
     titulo: "Interestellar",
     direccion: ["Christopher Nolan"],
@@ -14,6 +15,7 @@ function App() {
     "Cuenta la historia de un grupo de astronautas que viajan a través de un agujero de gusano cerca de Saturno en busca de un nuevo hogar para la humanidad.",
   };
 
+  //Objetos actores.
   const actor1 = {
       nombre: "Matthew McConaughey",
       foto: "https://cdn.guacamouly.com/wp-content/uploads/2022/09/portada-MATTHEW-150x150.png",
@@ -34,12 +36,17 @@ function App() {
   return (
 
     <React.Fragment>
+      {/* Componente película. */}
       <Pelicula
       titulo={objeto.titulo}
       direccion={[objeto.direccion]}
       cartelera={objeto.cartelera}>
         {objeto.resumen}
       </Pelicula>
+
+      <h2>Actores</h2>
+
+      {/* Componentes actores. */}
       <Actor
       nombre={actor1.nombre}
       foto={actor1.foto}>

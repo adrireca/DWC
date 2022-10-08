@@ -1,0 +1,14 @@
+.nav{
+    padding: 0 100px;
+}
+
+.nav ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.nav ul li{
+    list-style: none;
+    color: #fff;
+}
