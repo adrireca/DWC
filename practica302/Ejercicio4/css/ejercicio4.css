@@ -1,0 +1,34 @@
+#imagenes{
+    width: 50%;
+    margin: auto;
+    margin-top: 40px;
+    animation: right-left 3s linear;
+    animation-iteration-count: infinite;
+}
+
+#img{
+    width: 100%;
+}
+
+/* Animación de la imagen */
+@keyframes right-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(20%);
+    }
+
+    50% {
+        transform: translateY(20%);
+    }
+
+    75% {
+        transform: translateX(-20%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}

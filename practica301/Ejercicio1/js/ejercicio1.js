@@ -3,31 +3,46 @@ const d = window.document;
 
 // Número de párrafos de la página.
 const parrafos = d.querySelectorAll('p');
-console.log(`Hay ${parrafos.length} párrafos en la página.`);
+const result1 = `Hay ${parrafos.length} párrafos en la página.`;
 
 
 //Texto del segundo párrafo
-console.log(`Texto del segundo párrafo -> ${parrafos[1].textContent}`);
+const parrafoSegundo = parrafos[1].textContent;
+const result2 = `Texto del segundo párrafo -> ${parrafoSegundo}`;
 
 
 //Número de enlaces de la página
 const enlaces = d.querySelectorAll('a');
-console.log(`Hay ${enlaces.length} enlaces en la página.`);
+const result3 = `Hay ${enlaces.length} enlaces en la página.`;
 
 
 //Dirección del primer enlace.
 const primerEnlace = d.querySelector('a').firstChild;
-console.log(`Dirección del primer enlace -> ${primerEnlace.parentElement.href}`);
+const result4 = `Dirección del primer enlace -> ${primerEnlace.parentElement.href}`;
 
 
 //Dirección del penúltimo enlace.
 const penultimoEnlace = d.getElementById('cite_ref-5').firstChild.href;
-console.log(`Dirección del penúltimo enlace -> ${penultimoEnlace}`);
+const result5 = `Dirección del penúltimo enlace -> ${penultimoEnlace}`;
 
 
-// El texto lo inserto en el div con id "info".
+//Creo un objeto para almacenar todos los resultados anteriores.
+const obj = {
+    totalPárrafos: result1,
+    segundoParrafo: result2,
+    totalEnlaces: result3,
+    primEnlace: result4,
+    penulEnlace: result5,
+};
+
+
+// Recorro el objeto e inserto en el div con id "info" el resultado.
 const divInfo = d.getElementById('info');
-const nuevosParrafos = d.createElement('p');
-parrafos.forEach((p) => {
+const hr = document.createElement('hr');
+divInfo.append(hr);
+
+for(i in obj){
+    const p = document.createElement('p');
+    p.append(obj[i]);
     divInfo.appendChild(p);
-})
+}
