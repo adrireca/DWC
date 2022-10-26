@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // import { sumar, restar, multiplicar, dividir } from '../Bibliotecas/Calculadora';
+import { cal } from '../Bibliotecas/utils';
 import "./css/calculadora.css";
 import { useRef } from "react";
 
@@ -21,11 +22,10 @@ export const Calculadora = () => {
   const [numberOne, setNumberOne] = useState('');
   const referencia = useRef();
 
-  const introducirNumero = event => {
-    // When user click on Button Focus go to the Input display
-    referencia.current.focus();
-    setNumberOne(prevNum => prevNum + event.target.value);
-  };
+  // const introducirNumero = event => {
+  //   referencia.current.focus();
+  //   setNumberOne(prevNum => prevNum + event.target.value);
+  // };
 
   const clearInputDisplay = () => {
     setNumberOne('');
@@ -33,14 +33,8 @@ export const Calculadora = () => {
 
   const calculate = () => {
     // event.preventDefault();
-    // const cal = (data) => {
-    //   return new Function('return'+ data)();
-    // }
-    // .filter((index, value) => {
-    //   index.includes('+' | '-' | '*' | '/');
-    // // }); .split('')
-    // let result = cal(numberOne);
-    // setNumberOne(result);
+    let result = cal(numberOne);
+    setNumberOne(result);
   };
 
   return (
@@ -66,31 +60,31 @@ export const Calculadora = () => {
               <button onClick={() => introducirNumero()} type='button' value={8}>8</button>
             </div>
             <div className='celda'>
-              <button onClick={() => introducirNumero} type='button' value={9}>9</button>
+              <button onClick={() => introducirNumero()} type='button' value={9}>9</button>
             </div>
             <div className='celda'>
               <button type='button'>X</button>
             </div>
             <div className='celda'>
-              <button onClick={() => introducirNumero} type='button' value={4}>4</button>
+              <button onClick={() => introducirNumero()} type='button' value={4}>4</button>
             </div>
             <div className='celda'>
-              <button onClick={() => introducirNumero} type='button' value={5}>5</button>
+              <button onClick={() => introducirNumero()} type='button' value={5}>5</button>
             </div>
             <div className='celda'>
-              <button onClick={() => introducirNumero} type='button' value={6}>6</button>
+              <button onClick={() => introducirNumero()} type='button' value={6}>6</button>
             </div>
             <div className='celda'>
               <button type='button'>-</button>
             </div>
             <div className='celda'>
-              <button onClick={() => introducirNumero} type='button' value={1}>1</button>
+              <button onClick={() => introducirNumero()} type='button' value={1}>1</button>
             </div>
             <div className='celda'>
-              <button onClick={() => introducirNumero} type='button' value={2}>2</button>
+              <button onClick={() => introducirNumero()} type='button' value={2}>2</button>
             </div>
             <div className='celda'>
-              <button onClick={() => introducirNumero} type='button' value={3}>3</button>
+              <button onClick={() => introducirNumero(event)} type='button' value={3}>3</button>
             </div>
             <div className='celda'>
               <button type='button'>+</button>
