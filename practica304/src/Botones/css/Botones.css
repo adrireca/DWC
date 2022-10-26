@@ -1,0 +1,16 @@
+.divActoresRecaudacion{
+    display: flex;
+    justify-content: center;
+}
+
+.divActoresRecaudacion div{
+    flex-grow: 1;
+}
+
+.oculto{
+    visibility: hidden;
+}
+
+.mostrar{
+    visibility: visible;
+}
