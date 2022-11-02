@@ -1,0 +1,10 @@
+.divBola{
+    width: 100px;
+    position: absolute;
+    bottom: 0;
+}
+
+.papelera img{
+    width: 300px;
+    position: relative;
+}
