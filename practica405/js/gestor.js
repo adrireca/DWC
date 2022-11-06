@@ -124,7 +124,7 @@ function borrarTarea(tarea){
 }
 
 
-
+//tarea arrastrable.
 document.addEventListener('dragstart', (e) => {
   tareaArrastrable = e.target;
 });
@@ -135,6 +135,7 @@ document.addEventListener('dragover', (e) => {
 
 document.addEventListener('drop', (e) => {
   e.preventDefault();
+  //si entra en el div acabadas, le añado la clase acabada.
   if(e.target.id === 'acabadas'){
     tareaArrastrable.classList = 'acabada';
     let textoDinamico = tareaArrastrable.innerText;
@@ -146,6 +147,7 @@ document.addEventListener('drop', (e) => {
                             </p>
                                 `;
     divAcabadas.style.opacity = "1";
+    //si entra en el div pendientes, le añado la clase tarea.
   }else if(e.target.id === 'pendientes'){
     tareaArrastrable.classList = 'tarea';
     let textoDinamico = tareaArrastrable.innerText;
@@ -161,6 +163,7 @@ document.addEventListener('drop', (e) => {
   e.target.appendChild(tareaArrastrable);
 });
 
+//estilos al arrastrar la tarea en los contenedores.
 divAcabadas.addEventListener("dragenter", (e) => {
   e.preventDefault();
   e.target.style.opacity = ".5";
