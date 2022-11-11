@@ -39,7 +39,7 @@ function almacenarDatosDiscos(){
     datosDiscos.push(nuevoDisco);
 }
 
-let guardar = document.getElementById('btn')
+let guardar = document.getElementById('btn');
 guardar.addEventListener('click', guardarDatosDiscos, false);
 function guardarDatosDiscos(){
     mensajeConfirmacion = `<p id="mensaje">Disco guardado</p>`;

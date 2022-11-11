@@ -6,13 +6,18 @@ export const Ejercicio1 = () => {
   let [aleatorios, setAleatorio] = useState(aleatorioInicial);
 
   const generarAleatorio = () => {
-    let aleatorio = generarNumeroAleatorio(1,100);
-    // console.log(aleatorio);
+    let aleatorio = generarNumeroAleatorio(1,10);
+    for(let i=0; i<aleatorios.length; i++){
+      if(aleatorios[i] === aleatorio){
+        aleatorio = generarNumeroAleatorio(1,10);
+      }
+    }
     setAleatorio([...aleatorios, aleatorio]);
   };
 
   const eliminarAleatorios = () => {
-
+    aleatorios = [];
+    setAleatorio(aleatorios);
   }
 
   return (
