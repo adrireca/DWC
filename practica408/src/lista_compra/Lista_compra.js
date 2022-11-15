@@ -9,16 +9,20 @@ export const Lista_compra = () => {
     unidades: "",
   };
 
+  let contador = 0;
+  let listaIndividual = [];
+
   const [lista, setLista] = useState(listaCompraInicial);
 
-//   const anyadirProducto = () => {
-//     setLista({...lista, nombre});
-//   };
+  const almacenarProducto = () => {
+    listaIndividual[contador] = lista;
+    contador++;
+    console.log(listaIndividual);
+  }
 
   const anyadirProducto = (e) => {
     const { name, value } = e.target;
     setLista({...lista, [name]: value});
-    console.log(lista);
   };
 
   return (
@@ -44,7 +48,7 @@ export const Lista_compra = () => {
             value={lista.nombre}
             onChange={anyadirProducto}
           />
-          {<button onClick={anyadirProducto}>Añadir</button> }
+          {<button onClick={almacenarProducto}>Añadir</button> }
         
 
         <div className="resultado">
