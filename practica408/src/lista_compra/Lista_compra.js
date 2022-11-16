@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 
 export const Lista_compra = () => {
-  let listaCompraInicial = {
-    id: "",
-    nombre: "",
-    descripcion: "",
-    precio: "",
-    unidades: "",
-  };
+  let listaCompraInicial = [];
 
   const [listaState, setLista] = useState(listaCompraInicial);
   let [rellenarCamposState, setRellenarCampos] = useState(
@@ -16,27 +10,24 @@ export const Lista_compra = () => {
 
   const recogerDatos = (e) => {
     e.preventDefault();
-    let target = e.target;
-    let nombre = target.nombre.value;
-    let descripcion = target.descripcion.value;
-    let precio = target.precio.value;
-    let unidades = target.unidades.value;
-    let listaState = {
-      id: new Date().getTime(),
-      nombre,
-      descripcion,
-      precio,
-      unidades,
-    };
-    rellenarCamposState = "Rellena todos los campos";
-    setLista(listaState);
-    setRellenarCampos(rellenarCamposState);
-  };
 
-  // const cambiarDatos = (e) => {
-  //   const { name, value } = e.target;
-  //   setLista({ ...listaState, [name]: value });
-  // };
+    let objeto = {
+      id: new Date().getTime(),
+      nombre: `${e.target.nombre.value}`,
+      descripcion: `${e.target.descripcion.value}`,
+      precio: `${e.target.precio.value}`,
+      unidades: `${e.target.unidades.value}`,
+    };
+
+    rellenarCamposState = "Rellena todos los campos";
+
+    objeto.nombre.length >= 1 &&
+    objeto.descripcion.length >= 1 &&
+    objeto.precio.length >= 1 &&
+    objeto.unidades.length >= 1
+      ? setLista([...listaState, objeto])
+      : setRellenarCampos(rellenarCamposState);
+  };
 
   return (
     <React.Fragment>
@@ -73,20 +64,18 @@ export const Lista_compra = () => {
           />
           <button type="submit">Añadir</button>
         </form>
+        <p>{rellenarCamposState}</p>
         <div className="resultado">
-          {listaState.nombre.length >= 1 &&
-          listaState.descripcion.length >= 1 &&
-          listaState.precio.length >= 1 &&
-          listaState.unidades.length >= 1 ? (
-            <ul>
-              <li>{listaState.nombre}</li>
-              <li>{listaState.descripcion}</li>
-              <li>{listaState.precio}</li>
-              <li>{listaState.unidades}</li>
-            </ul>
-          ) : (
-            <p>{rellenarCamposState}</p>
-          )}
+          {listaState.map((obj) => {
+            return (
+              <ul>
+                <li key={obj}>{obj.nombre}</li>
+                <li key={obj}>{obj.descripcion}</li>
+                <li key={obj}>{obj.precio}</li>
+                <li key={obj}>{obj.unidades}</li>
+              </ul>
+            );
+          })}
         </div>
       </div>
     </React.Fragment>
