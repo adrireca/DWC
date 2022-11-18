@@ -1,0 +1,41 @@
+.container{
+    max-width: 1300px;
+    margin: auto;
+}
+
+.container .row{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.divPeliculas h2, .divInformacion .tituloInformacion{
+    text-align: center;
+    font-family: 'Calibri';
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.row .divPeliculas, .row .divInformacion{
+    flex-grow: 1;
+    flex-basis: 50%;
+}
+
+.listadoPeliculas{
+    text-align: center;
+    padding-left: 0;
+}
+
+.listadoPeliculas .titulo{
+    list-style: none;
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.divInformacion .datosPelicula{
+    text-align: center;
+}
+
+.datosPelicula p{
+    text-align: justify;
+}

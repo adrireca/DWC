@@ -1,0 +1,58 @@
+.container h1{
+    text-align: center;
+    color: #26cdfc;
+    font-family: 'Calibri';
+    font-weight: 400;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.row{
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.divFormulario form input[type="text"]{
+    display: block;
+    margin: 20px;
+    padding: 10px;
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.divFormulario form button[type="submit"], 
+.divResultado button[type="button"]{
+    margin: 0 20px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #26cdfc;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.divResultado button[type="button"]{
+    margin-left: 0;
+}
+
+.divResultado .aviso{
+    color: #fff;
+}
+
+.divResultado .producto{
+    color: #fff;
+    list-style: none;
+    padding-left: 0;
+}
+
+.divResultado .producto li{
+    margin: 5px;
+}
+
+.eliminar{
+    display: none;
+}
