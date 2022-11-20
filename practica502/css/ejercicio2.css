@@ -1,0 +1,32 @@
+.container{
+    max-width: 1300px;
+    margin: auto;
+}
+
+.divBoton{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.btnMostrarAnimal{
+    text-transform: uppercase;
+}
+
+.divAnimal .imagen{
+    width: 100%;
+}
+
+.divCaractAnimal{
+    font-size: 18px;
+}
+
+.divAnimal h2, .divCaractAnimal h2{
+    font-size: 1.7rem;
+}
+
+.divCaractAnimal p span{
+    text-transform: uppercase;
+    color: #198754;
+    font-size: 20px;
+    font-weight: 400;
+}

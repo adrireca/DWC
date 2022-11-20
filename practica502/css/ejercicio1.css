@@ -1,0 +1,60 @@
+.container{
+    max-width: 1300px;
+    margin: auto;
+}
+
+.container .row{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.divPeliculas h2, .divInformacion .tituloInformacion, .divActores h2{
+    text-align: center;
+    font-family: 'Calibri';
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.row .divPeliculas, .row .divInformacion, .row .divActores{
+    flex-grow: 1;
+    flex-basis: 50%;
+}
+
+.listadoPeliculas, .divActores{
+    text-align: center;
+    padding-left: 0;
+}
+
+.listadoPeliculas .titulo{
+    list-style: none;
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.divInformacion .datosPelicula{
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #ccc;
+}
+
+.datosPelicula .tituloEpisodio{
+    color: #ff0000;
+}
+
+.datosPelicula h3, .datosPelicula h4{
+    color: #212121;
+}
+
+.datosPelicula p{
+    text-align: justify;
+}
+
+.divActores ul{
+    padding-left: 0;
+}
+
+.divActores ul li{
+    list-style: none;
+    padding: 5px 0;
+}
