@@ -39,8 +39,10 @@ function traerDatosActores(objeto, donde) {
         return respuesta.json();
       })
       .then((datos) => {
+        console.log(datos);
         //en un <ul> meto el nombre de todos los actores de forma formateada (en <li>).
         ul.innerHTML += mostrarNombreActores(datos);
+         
       });
   });
   donde.appendChild(h2);
