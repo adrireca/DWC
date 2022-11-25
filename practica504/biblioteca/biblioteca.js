@@ -56,6 +56,7 @@ function traerDatosActores(objeto, donde) {
 
 }
 
+//Muestro las características del actor elegido.
 function mostrarCaracteristicasActor(obj, donde){
   let caracteristica = `<p>Nombre: ${obj.name}</p>
                     <p>Género: ${obj.gender}</p>
@@ -67,6 +68,7 @@ function mostrarCaracteristicasActor(obj, donde){
   donde.innerHTML = caracteristica;
 }
 
+//Muestro los vehículos del actor elegido.
 const mostrarVehiculosActor = async (obj, donde) => {
   let vehiculos = "";
   obj.vehicles.map(async (v) => {
@@ -76,6 +78,7 @@ const mostrarVehiculosActor = async (obj, donde) => {
   });
 }
 
+//Muestro las características del vehículo elegido.
 const mostrarCaracteristicasVehiculos = async (obj, donde) => {
   let caracterisiticas = `<p>Nombre: ${obj.name}</p>
                           <p>Modelo: ${obj.model}</p>
@@ -86,6 +89,7 @@ const mostrarCaracteristicasVehiculos = async (obj, donde) => {
   donde.innerHTML = caracterisiticas;
 };
 
+//Función limpia contenedores.
 const borradoDivs = (elem) => {
   elem.innerHTML="";
 }

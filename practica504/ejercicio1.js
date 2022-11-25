@@ -32,7 +32,10 @@ window.onload = () => {
     let datos = await obtenerDatos(e.target.id);
     mostrarDatosPelicula(datos, informacion);
     traerDatosActores(datos, listadoActores);
+    //Limpio contenedor cuando no es necesario mostrar.
     borradoDivs(caracteristica);
+    borradoDivs(listadoVehiculos);
+    borradoDivs(caractVehiculos);
   });
 
   //Petición para mostrar las características del actor elegido.
@@ -40,6 +43,9 @@ window.onload = () => {
     let datos = await obtenerDatos(e.target.id);
     mostrarCaracteristicasActor(datos, caracteristica);
     mostrarVehiculosActor(datos, listadoVehiculos);
+    //Limpio contenedor cuando no es necesario mostrar.
+    borradoDivs(listadoVehiculos);
+    borradoDivs(caractVehiculos);
   });
 
   //Petición para mostrar las características del vehiculo elegido.
