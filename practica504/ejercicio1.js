@@ -7,7 +7,8 @@ import {
   mostrarCaracteristicasActor,
   obtenerDatos,
   mostrarVehiculosActor,
-  mostrarCaracteristicasVehiculos
+  mostrarCaracteristicasVehiculos,
+  borradoDivs
 } from "./biblioteca/biblioteca.js";
 
 window.onload = () => {
@@ -16,7 +17,7 @@ window.onload = () => {
   const listadoActores = document.querySelector(".listadoActores");
   const caracteristica = document.querySelector(".caracteristica");
   const informacion = document.querySelector(".informacion");
-  const caractVehiculos = document.querySelector(".caractVehiculos");
+  const caractVehiculos = document.querySelector(".caractV");
   const listadoVehiculos = document.querySelector(".listadoVehiculos");
 
   //Petición para mostrar el listado de los episodios.
@@ -31,6 +32,7 @@ window.onload = () => {
     let datos = await obtenerDatos(e.target.id);
     mostrarDatosPelicula(datos, informacion);
     traerDatosActores(datos, listadoActores);
+    borradoDivs(caracteristica);
   });
 
   //Petición para mostrar las características del actor elegido.

@@ -22,9 +22,7 @@ function mostrarTitulos(objeto, donde) {
   let titulo = "";
   objeto.map((p, i, a) => {
     //le añado un id consecutivo que posteriormente utilizaré.
-    titulo += `<li id="${p.url}" class="titulo">${p.episode_id} - ${
-      p.title
-    }.</li>`;
+    titulo += `<li id="${p.url}" class="titulo">${p.title}.</li>`;
   });
   donde.innerHTML = titulo;
 }
@@ -88,4 +86,8 @@ const mostrarCaracteristicasVehiculos = async (obj, donde) => {
   donde.innerHTML = caracterisiticas;
 };
 
-export {mostrarCaracteristicasVehiculos, mostrarVehiculosActor, obtenerDatos ,mostrarTitulos, mostrarDatosPelicula, traerDatosActores, mostrarCaracteristicasActor };
+const borradoDivs = (elem) => {
+  elem.innerHTML="";
+}
+
+export {borradoDivs, mostrarCaracteristicasVehiculos, mostrarVehiculosActor, obtenerDatos ,mostrarTitulos, mostrarDatosPelicula, traerDatosActores, mostrarCaracteristicasActor };
