@@ -5,49 +5,45 @@ import {
   mostrarTitulos,
   traerDatosActores,
   mostrarCaracteristicasActor,
+  obtenerDatos,
+  mostrarVehiculosActor,
+  mostrarCaracteristicasVehiculos
 } from "./biblioteca/biblioteca.js";
 
 window.onload = () => {
   const url = "https://swapi.py4e.com/api/films";
   const listadoPeliculas = document.querySelector(".listadoPeliculas");
-  const divInformacion = document.querySelector(".divInformacion");
   const listadoActores = document.querySelector(".listadoActores");
-  const caractActor = document.querySelector(".caractActor");
+  const caracteristica = document.querySelector(".caracteristica");
   const informacion = document.querySelector(".informacion");
+  const caractVehiculos = document.querySelector(".caractVehiculos");
+  const listadoVehiculos = document.querySelector(".listadoVehiculos");
 
-  //hago una petición a la api.
-  fetch(url)
-    .then((respuesta) => {
-      return respuesta.json();
-    })
-    .then((datos) => {
-      //llamo a una función para pintar los títulos de forma formateada.
-      mostrarTitulos(datos.results, listadoPeliculas);
-    });
+  //Petición para mostrar el listado de los episodios.
+  const mostrarListadoPeliculas = async () => {
+    let datos = await obtenerDatos(url);
+    mostrarTitulos(datos.results, listadoPeliculas);
+  };
+  mostrarListadoPeliculas();
 
-    //al click de cada <li>.
-  listadoPeliculas.addEventListener("click", (e) => {
-    //hago un petición de una peli en concreto dependiendo del id del <li> seleccionado.
-    fetch(e.target.id)
-    .then((respuesta) => {
-      return respuesta.json()
-    })
-    .then((datos) => {
-      //llamo a una función para pintar los datos de esa peli y actores de forma formateada.
-      mostrarDatosPelicula(datos, informacion);
-      traerDatosActores(datos, listadoActores);
-    })
+  //Petición para mostrar la información y 10 actores del episodio elegido.
+  listadoPeliculas.addEventListener("click", async (e) => {
+    let datos = await obtenerDatos(e.target.id);
+    mostrarDatosPelicula(datos, informacion);
+    traerDatosActores(datos, listadoActores);
   });
 
-  listadoActores.addEventListener('click', (e) => {
-    fetch(e.target.id)
-    .then((respuesta) => {
-      return respuesta.json();
-    })
-    .then((datos) => {
-      mostrarCaracteristicasActor(datos, caractActor);
-    })
+  //Petición para mostrar las características del actor elegido.
+  listadoActores.addEventListener('click', async (e) => {
+    let datos = await obtenerDatos(e.target.id);
+    mostrarCaracteristicasActor(datos, caracteristica);
+    mostrarVehiculosActor(datos, listadoVehiculos);
   });
 
+  //Petición para mostrar las características del vehiculo elegido.
+  listadoVehiculos.addEventListener('click', async (e) => {
+    let datos = await obtenerDatos(e.target.id);
+    mostrarCaracteristicasVehiculos(datos, caractVehiculos);
+  });
 
 };

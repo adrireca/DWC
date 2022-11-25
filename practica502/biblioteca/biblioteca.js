@@ -5,7 +5,7 @@ function mostrarTitulos(objeto, donde) {
   let titulo = "";
   objeto.map((p, i, a) => {
     //le añado un id consecutivo que posteriormente utilizaré.
-    titulo += `<li id=${i + 1} class="titulo">${p.episode_id} - ${
+    titulo += `<li id="${p.url}" class="titulo">${p.episode_id} - ${
       p.title
     }.</li>`;
   });
@@ -14,45 +14,44 @@ function mostrarTitulos(objeto, donde) {
 
 //muestro los datos del episodio seleccionado.
 function mostrarDatosPelicula(objeto, donde) {
-  let pelicula = "";
-  let divPelicula = document.createElement("div");
-  divPelicula.classList.add("datosPelicula");
-  pelicula = `<h2 class='tituloInformacion'>Información</h2>
+  // donde.classList.add("datosPelicula");
+  let pelicula = `
               <h2 class='tituloEpisodio'>${objeto.title}.</h2>
               <h3>${objeto.director}</h3>
               <h4>${objeto.producer}</h4>
               <time datetime='${objeto.release_date}'>${objeto.release_date}</time>
               <p>${objeto.opening_crawl}</p>`;
-  divPelicula.innerHTML = pelicula;
-  donde.appendChild(divPelicula);
+  donde.innerHTML = pelicula;
 }
 
 //función donde pinto los actores del episodio seleccionado.
 function traerDatosActores(objeto, donde) {
-  let ul = document.createElement("ul");
-  let h2 = document.createElement("h2");
-  h2.innerText = 'Actores';
-  //recorro el array de actores.
-  objeto.characters.map((urlActor) => {
-    fetch(urlActor)
+  let actores = "";
+
+  //recorro el array de actores y obtengo solo 10.
+  for(let i=0; i<10; i++){
+    fetch(objeto.characters[i])
       .then((respuesta) => {
         return respuesta.json();
       })
       .then((datos) => {
-        console.log(datos);
-        //en un <ul> meto el nombre de todos los actores de forma formateada (en <li>).
-        ul.innerHTML += mostrarNombreActores(datos);
-         
+        actores += `<li id='${datos.url}'>${datos.name}</li>`;
+        donde.innerHTML = actores;
       });
-  });
-  donde.appendChild(h2);
-  donde.appendChild(ul);
+  }
+
 }
 
-//devuelvo el nombre de cada actor de forma formateada.
-function mostrarNombreActores(objeto){
-  let actores = `<li>${objeto.name}</li>`;
-  return actores;
+
+function mostrarCaracteristicasActor(obj, donde){
+  let caracteristica = `<p>Nombre: ${obj.name}</p>
+                    <p>Género: ${obj.gender}</p>
+                    <p>Altura: ${obj.height}</p>
+                    <p>Peso: ${obj.mass}</p>
+                    <p>Color de pelo: ${obj.hair_color}</p>
+                    <p>Color ojos: ${obj.eye_color}</p>
+                    `;
+  donde.innerHTML = caracteristica;
 }
 
-export { mostrarTitulos, mostrarDatosPelicula, traerDatosActores };
+export { mostrarTitulos, mostrarDatosPelicula, traerDatosActores, mostrarCaracteristicasActor };

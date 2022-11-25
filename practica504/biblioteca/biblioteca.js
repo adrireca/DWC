@@ -1,5 +1,22 @@
 "use strict";
 
+const obtenerDatos = (url) => {
+  // Obtiene datos de una API y los transforma a JSON.
+  return (
+    fetch(url)
+      .then((respuesta) => {
+        return respuesta.json();
+      })
+      .then((datos) => {
+        return datos;
+      })
+      // Si se produce un error se devuelve un mensaje.
+      .catch(() => {
+        return new Error("Ha habido un error.");
+      })
+  );
+};
+
 //muestro los títulos.
 function mostrarTitulos(objeto, donde) {
   let titulo = "";
@@ -14,7 +31,6 @@ function mostrarTitulos(objeto, donde) {
 
 //muestro los datos del episodio seleccionado.
 function mostrarDatosPelicula(objeto, donde) {
-  // donde.classList.add("datosPelicula");
   let pelicula = `
               <h2 class='tituloEpisodio'>${objeto.title}.</h2>
               <h3>${objeto.director}</h3>
@@ -42,15 +58,34 @@ function traerDatosActores(objeto, donde) {
 
 }
 
-
 function mostrarCaracteristicasActor(obj, donde){
-  let caractActor = `<p>Género: ${obj.gender}</p>
+  let caracteristica = `<p>Nombre: ${obj.name}</p>
+                    <p>Género: ${obj.gender}</p>
                     <p>Altura: ${obj.height}</p>
                     <p>Peso: ${obj.mass}</p>
                     <p>Color de pelo: ${obj.hair_color}</p>
                     <p>Color ojos: ${obj.eye_color}</p>
                     `;
-  donde.innerHTML = caractActor;
+  donde.innerHTML = caracteristica;
 }
 
-export { mostrarTitulos, mostrarDatosPelicula, traerDatosActores, mostrarCaracteristicasActor };
+const mostrarVehiculosActor = async (obj, donde) => {
+  let vehiculos = "";
+  obj.vehicles.map(async (v) => {
+    let datos = await obtenerDatos(v);
+    vehiculos += `<li id="${datos.url}">${datos.name}</li>`;
+    donde.innerHTML = vehiculos;
+  });
+}
+
+const mostrarCaracteristicasVehiculos = async (obj, donde) => {
+  let caracterisiticas = `<p>Nombre: ${obj.name}</p>
+                          <p>Modelo: ${obj.model}</p>
+                          <p>Longitud: ${obj.length}</p>
+                          <p>Capacidad: ${obj.cargo_capacity}</p>
+                          <p>Velocidad máxima: ${obj.max_atmosphering_speed}</p>
+                          `;
+  donde.innerHTML = caracterisiticas;
+};
+
+export {mostrarCaracteristicasVehiculos, mostrarVehiculosActor, obtenerDatos ,mostrarTitulos, mostrarDatosPelicula, traerDatosActores, mostrarCaracteristicasActor };

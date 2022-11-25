@@ -1,14 +1,15 @@
 .container{
-    max-width: 1300px;
+    max-width: 1500px;
     margin: auto;
 }
 
 .container .row{
     display: flex;
     flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
-.divPeliculas h2, .divInformacion .tituloInformacion, .divActores h2{
+.divPeliculas h2, .divInformacion .tituloInformacion, .divActores h2, .divCaractActor h2{
     text-align: center;
     font-family: 'Calibri';
     font-size: 30px;
@@ -16,9 +17,20 @@
     letter-spacing: 2px;
 }
 
-.row .divPeliculas, .row .divInformacion, .row .divActores{
-    flex-grow: 1;
-    flex-basis: 50%;
+.row .divPeliculas{
+    flex-basis: 20%;
+}
+
+.row .divInformacion{
+    flex-basis: 30%;
+}
+
+.row .divActores{
+    flex-basis: 20%;
+}
+
+.row .divCaractActor{
+    flex-basis: 20%;
 }
 
 .listadoPeliculas, .divActores{
@@ -59,4 +71,8 @@
 .divActores ul li{
     list-style: none;
     padding: 5px 0;
+}
+
+.caracteristica{
+    text-align: center;
 }
