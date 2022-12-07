@@ -1,4 +1,5 @@
 import React from 'react';
+import "./css/Actores.css";
 
 export const Actores = (props) => {
   return (
@@ -8,6 +9,8 @@ export const Actores = (props) => {
         {/* Se imprime el listado de actores. */}
         {props.length !== 0
           ? props.datos.map((v, i, a) => {
+            //Pinto solo 10 actores.
+            while(i<10){
               return (
                 <li
                   key={i}
@@ -19,6 +22,7 @@ export const Actores = (props) => {
                   {v.value.name}
                 </li>
               );
+            }
             })
           : "No se han detectado actores en esta API."}
       </ul>

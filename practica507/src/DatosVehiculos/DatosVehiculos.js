@@ -1,4 +1,5 @@
 import React from 'react';
+import "./css/DatosVehiculos.css";
 
 export const DatosVehiculos = (props) => {
   return (

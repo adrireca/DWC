@@ -1,4 +1,5 @@
 import React from 'react';
+import "./css/DatosActores.css";
 
 export const DatosActores = (props) => {
 

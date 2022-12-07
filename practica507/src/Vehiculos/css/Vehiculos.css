@@ -1,0 +1,25 @@
+.divVehiculos{
+    padding: 20px;
+    flex-basis: 25%;
+}
+
+.divVehiculos h2{
+    color: #FAE31E;
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.divVehiculos ul{
+    padding-top: 20px;
+}
+
+.divVehiculos .vehiculo{
+    list-style: none;
+    padding: 5px 0;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}

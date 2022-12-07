@@ -1,4 +1,5 @@
 import React from 'react';
+import "./css/Vehiculos.css";
 
 export const Vehiculos = (props) => {
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import "./css/DatosPelicula.css";
 
 export const DatosPelicula = (props) => {
 

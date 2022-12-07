@@ -8,11 +8,14 @@ import { Vehiculos } from "./Vehiculos/Vehiculos";
 import { DatosVehiculos } from "./DatosVehiculos/DatosVehiculos";
 import { Naves } from "./Naves/Naves";
 import { DatosNaves } from "./DatosNaves/DatosNaves";
+import "./App.css";
 
 function App() {
   const url = "https://swapi.py4e.com/api/films";
+  //Valor inicial de los estados.
   const valorInicial = [];
   const valorInicial2 = {};
+  //Declaro un estado por cada componente.
   const [peliculas, setPeliculas] = useState(valorInicial);
   const [datosPelicula, setDatosPelicula] = useState(valorInicial2);
   const [actores, setActores] = useState(valorInicial);
@@ -28,23 +31,36 @@ function App() {
     setPeliculas(datos.results);
   };
 
+  //Obtengo los datos de la peli seleccionada y, a su vez, llamo una función.
   const getDatosPelicula = async (origen) => {
     let datos = await obtenerDatos(origen);
     if (!datos.message) {
       setDatosPelicula(datos);
       getActores(datos.characters);
+      //Al obtener los datos de los actores, limpio los datos que no se deben mostrar.
+      setDatosActores(valorInicial2);
+      setVehiculos(valorInicial);
+      setDatosVehiculos(valorInicial2);
+      setNaves(valorInicial);
+      setDatosNaves(valorInicial2);
     }
   };
 
+  //Obtengo el nombre de los actores de la peli seleccionada.
   const getActores = async (origen) => {
+    //Array de promesas sin cosumir.
     let promesas = origen.map(async (promesa) => {
       return obtenerDatos(promesa);
     });
 
+    //Consumo el array de promesas y actualizo su estado.
     Promise.allSettled(promesas).then((elenco) => {
       setActores(elenco);
     });
   };
+
+  //A partir de ahora, mismo procedimiento que los pasos anteriores
+  //para obtener los datos de los actores, vehículos, datos vehículos, naves y datos naves.
 
   const getDatosActores = async (origen) => {
     let datos = await obtenerDatos(origen);
@@ -52,6 +68,9 @@ function App() {
       setDatosActores(datos);
       getVehiculos(datos.vehicles);
       getNaves(datos.starships);
+      //Al obtener los datos de los actores, limpio los datos que no se deben mostrar.
+      setDatosVehiculos(valorInicial2);
+      setDatosNaves(valorInicial2);
     }
   };
 
@@ -89,14 +108,17 @@ function App() {
     }
   };
 
+  //Nada más ejecutar la app pinto el listado de pelis.
   useEffect(() => {
     mostrarListadoPeliculas(url);
   }, []);
 
   return (
     <React.Fragment>
+      {/* Estructura de la app donde llamo a los componentes y actualizo sus estado pasándoselos por parámetro. */}
       <div className="wrapper">
         <div className="container">
+        <h1>API Star Wars</h1>
           <div className="row">
             <div className="listadoPeliculas">
               <ListadoPeliculas datos={peliculas} funcion={getDatosPelicula} />
