@@ -1,17 +1,17 @@
 import React from 'react';
 
-export const Actores = (props) => {
+export const Naves = (props) => {
   return (
     <React.Fragment>
-        <h2>Actores</h2>
+        <h2>Naves</h2>
         <ul>
-        {/* Se imprime el listado de actores. */}
+        {/* Se imprime el listado de naves. */}
         {props.length !== 0
           ? props.datos.map((v, i, a) => {
               return (
                 <li
                   key={i}
-                  className="actor"
+                  className="nave"
                   onClick={() => {
                     props.funcion(v.value.url);
                   }}
@@ -20,7 +20,7 @@ export const Actores = (props) => {
                 </li>
               );
             })
-          : "No se han detectado actores en esta API."}
+          : "No se han detectado naves en esta API."}
       </ul>
     </React.Fragment>
   )
