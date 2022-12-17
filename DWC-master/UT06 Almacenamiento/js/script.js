@@ -166,5 +166,5 @@ window.onload = () => {
     }
   };
 
-  //filtrarDiscentes("modulos", "DWC");
+  filtrarDiscentes("modulos", "DWC");
 }; // Fin window.load.

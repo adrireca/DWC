@@ -2,3 +2,18 @@
     padding: 0;
     margin: 0;
 }
+
+.divProductos{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding-top: 100px;
+}
+
+.divProductos .divProducto{
+    padding: 20px;
+}
+
+.divProducto img{
+    width: 100%;
+}
