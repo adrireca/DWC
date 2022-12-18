@@ -34,10 +34,10 @@ const header = () => {
 const productos = (doc) => {
   return ` <div class="divProducto">
                 <img src="${doc.data().imagen}" />
-                <h3>${doc.data().nombre}</h3>
-                <h3>${doc.data().precio}€</h3>
-                <p>Peso: ${doc.data().peso}</p>
-                <p>${doc.data().descripcion}</p>
+                <h3 class="tituloProducto">${doc.data().nombre}</h3>
+                <h3 class="precioProducto">${doc.data().precio}€</h3>
+                <p class="pesoProducto">Peso: ${doc.data().peso} kg</p>
+                <p class="descripcionProducto">${doc.data().descripcion}</p>
             </div>
         `;
 };

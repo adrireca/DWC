@@ -27,6 +27,7 @@ window.onload = () => {
   let ordenarNombre = document.querySelector(".ordenarNombre");
   let ordenarPrecio = document.querySelector(".ordenarPrecio");
   let ordenarPeso = document.querySelector(".ordenarPeso");
+  let subir = document.getElementById("subir");
 
   const db = getFirestore(app);
   const productosColeccion = collection(db, "productos");
@@ -161,4 +162,14 @@ window.onload = () => {
     //Ejecuto la función.
     ordenarPorPeso("peso");
   });
+
+  //Scroll al inicio.
+  subir.addEventListener("click", (e) => {
+    scroll({
+      top: 0,
+      behavior: "smooth"
+    });
+  
+  });
+
 };
