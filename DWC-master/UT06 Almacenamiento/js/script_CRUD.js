@@ -92,7 +92,7 @@ window.onload = () => {
    *  ¡¡¡CUIDADO!!!
    *  Se sobrescriben todos los datos del documento.
    *  Y además:
-   *    ->  las caves no especificadas se eliminan,
+   *    ->  las claves no especificadas se eliminan,
    *    ->  las claves nuevas se añaden al documento.
    *
    */
