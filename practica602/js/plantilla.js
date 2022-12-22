@@ -8,10 +8,16 @@ const productos = (doc) => {
                 <p class="pesoProducto">Peso: ${doc.data().peso} kg</p>
                 <p class="descripcionProducto">${doc.data().descripcion}</p>
                 <div class="btnProductos">
-                  <button class="btnEditar btn mb-2" type="button">Editar</button>
-                  <button class="btnEliminar btn" type="button">Eliminar</button>
+                  <button id="${doc.id}" class="btnEditar btn mb-2" type="button">Editar</button>
+                  <button id="${doc.id}" class="btnEliminar btn" type="button">Eliminar</button>
                 </div>
             </div>
+        `;
+};
+
+const cuadroResumen = (totalProductos, media) => {
+  return `<p>${totalProductos} productos.</p>
+          <p>Precio medio: ${media}€</p>
         `;
 };
 
@@ -21,4 +27,4 @@ const borrar = (objetoDOM) => {
   }, 5000);
 };
 
-export { productos, borrar };
+export { productos, borrar, cuadroResumen };

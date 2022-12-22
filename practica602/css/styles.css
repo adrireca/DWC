@@ -143,7 +143,6 @@
     width: 60%;
     margin: auto;
     padding-bottom: 2rem;
-    /* border-bottom: .2rem solid #fff; */
     display: flex;
     align-items: center;
 }
@@ -165,23 +164,6 @@
 .search-form .form-control::placeholder{
     color: #fff;
 }
-
-/* .search-form #search-box {
-    width: 100%;
-    font-size: 1.7rem;
-    text-transform: none;
-    color: #fff;
-    background: none;
-    border: none;
-}
-
-.search-form #search-box:focus {
-    outline: none;
-}
-
-.search-form #search-box::placeholder {
-    color: #fff;
-} */
 
 .search-form form label {
     font-size: 3rem;
@@ -214,7 +196,19 @@
     display: none;
 }
 
-/* Footer */
+/* Cuadro resumen. */
+.divResumen{
+    text-align: center;
+    background-color: #eaeaea;
+    padding: 30px 0;
+}
+
+.divResumen p{
+    margin-bottom: 0;
+    font-size: 1.3em;
+}
+
+/* Footer. */
 #footer{
     display: flex;
     flex-direction: column;

@@ -152,7 +152,7 @@ window.onload = () => {
     });
   };
 
-  //actualizarDiscente(idEjemplo);
+  actualizarDiscente(idEjemplo);
   //actualizarDiscenteOtraVez(idEjemplo);
 
   /**

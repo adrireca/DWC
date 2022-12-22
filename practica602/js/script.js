@@ -10,6 +10,8 @@ import {
   onSnapshot,
   doc,
   addDoc,
+  updateDoc,
+  deleteDoc,
   query,
   where,
   orderBy,
@@ -33,13 +35,15 @@ window.onload = () => {
   let formularioRegistro = document.querySelector(".search-form");
   let cerrarFormularioRegistro = document.getElementById("close-search");
   let guardarProducto = document.querySelector(".guardarProducto");
-  let btnEditar = document.querySelector(".btnEditar");
   let formValorNombre = document.querySelector(".formValorNombre");
   let formValorPrecio = document.querySelector(".formValorPrecio");
   let formValorPeso = document.querySelector(".formValorPeso");
   let formValorImagen = document.querySelector(".formValorImagen");
   let formValorDescripcion = document.querySelector(".formValorDescripcion");
+  let divResumen = document.querySelector(".divResumen");
   let subir = document.getElementById("subir");
+  let suma = 0;
+  let media = 0;
 
   const db = getFirestore(app);
   const productosColeccion = collection(db, "productos");
@@ -47,9 +51,15 @@ window.onload = () => {
   //Pinto los productos.
   const listarProductos = async () => {
     const productosDocumentos = await getDocs(productosColeccion);
+    divProductos.innerHTML = "";
     productosDocumentos.docs.map((doc) => {
       divProductos.innerHTML += plantillas.productos(doc);
+      suma += doc.data().precio;
     });
+    let totalProductos = productosDocumentos.size;
+    media = Math.round(suma / totalProductos);
+    divResumen.innerHTML = plantillas.cuadroResumen(totalProductos,media); //Cuadro resumen.
+    console.log(media);
   };
   //Ejecuto la función.
   listarProductos();
@@ -89,10 +99,7 @@ window.onload = () => {
 
     const filtrarPorPrecio = async (campo) => {
       //Consulta donde comparo el campo precio con el valor del input.
-      let consulta = query(
-        productosColeccion,
-        where(campo, "<=", valor)
-      );
+      let consulta = query(productosColeccion, where(campo, "<=", valor));
       const precioFiltrados = await getDocs(consulta);
       divProductos.innerHTML = "";
       if (precioFiltrados.docs.length) {
@@ -179,7 +186,7 @@ window.onload = () => {
   });
 
   //Recogo los valores del formulario y creo un objeto con esos datos para insertarlo.
-  guardarProducto.addEventListener('click', () => {
+  guardarProducto.addEventListener("click", () => {
     let nombre = formValorNombre.value;
     let precio = parseFloat(formValorPrecio.value);
     let peso = parseFloat(formValorPeso.value);
@@ -192,54 +199,99 @@ window.onload = () => {
       imagen: imagen,
       descripcion: descripcion,
     };
-    insertarProducto(objeto);
+    if (guardarProducto.innerText === "Guardar") {
+      insertarProducto(objeto);
+    }
   });
 
   //Insertar producto.
   const insertarProducto = async (obj) => {
     const productoGuardado = await addDoc(productosColeccion, obj);
+    //limpiar formulario aquí
     informacion.innerHTML = `<p class='bien'>Producto guardado correctamente con el id ${productoGuardado.id}</p>`;
     plantillas.borrar(informacion);
   };
 
-  //Editar un producto.
-
-  //Mostrar formulario para editar producto.
-  btnEditar.addEventListener('click', () => {
-    if(formularioRegistro.classList.value === 'mostrarFormulario'){
-      formularioRegistro.classList.add('ocultarFormulario');
-    }else{
-      formularioRegistro.classList.add('mostrarFormulario');
-      formularioRegistro.classList.remove('ocultarFormulario');
-    }
-  });
-
   //Mostrar formulario para insertar producto.
-  btnInsertarProducto.addEventListener('click', () => {
-    if(formularioRegistro.classList.value === 'mostrarFormulario'){
-      formularioRegistro.classList.add('ocultarFormulario');
-    }else{
-      formularioRegistro.classList.add('mostrarFormulario');
-      formularioRegistro.classList.remove('ocultarFormulario');
+  btnInsertarProducto.addEventListener("click", () => {
+    if (formularioRegistro.classList.value === "mostrarFormulario") {
+      formularioRegistro.classList.add("ocultarFormulario");
+    } else {
+      formularioRegistro.classList.add("mostrarFormulario");
+      formularioRegistro.classList.remove("ocultarFormulario");
     }
+    guardarProducto.innerText = "Guardar";
   });
 
   //Ocultar formulario de insertar producto.
-  cerrarFormularioRegistro.addEventListener('click', () => {
-    if(formularioRegistro.classList.value === 'ocultarFormulario'){
-      formularioRegistro.classList.add('mostrarFormulario');
-    }else{
-      formularioRegistro.classList.add('ocultarFormulario');
-      formularioRegistro.classList.remove('mostrarFormulario');
+  cerrarFormularioRegistro.addEventListener("click", () => {
+    if (formularioRegistro.classList.value === "ocultarFormulario") {
+      formularioRegistro.classList.add("mostrarFormulario");
+    } else {
+      formularioRegistro.classList.add("ocultarFormulario");
+      formularioRegistro.classList.remove("mostrarFormulario");
     }
   });
+
+  //Modificar producto.
+  divProductos.addEventListener('click', async (e) => {
+    let ref = e.target.id;
+    if (e.target.classList.contains('btnEditar')) {
+      if (formularioRegistro.classList.value === "mostrarFormulario") {
+        formularioRegistro.classList.add("ocultarFormulario");
+      } else {
+        formularioRegistro.classList.add("mostrarFormulario");
+        formularioRegistro.classList.remove("ocultarFormulario");
+      }
+        guardarProducto.innerText = "Actualizar";
+
+        //Recogo los valores del formulario y creo un objeto con esos datos para modificarlo.
+        guardarProducto.addEventListener("click", () => {
+          let nombre = formValorNombre.value;
+          let precio = parseFloat(formValorPrecio.value);
+          let peso = parseFloat(formValorPeso.value);
+          let imagen = formValorImagen.value;
+          let descripcion = formValorDescripcion.value;
+          let objeto = {
+            nombre: nombre,
+            precio: precio,
+            peso: peso,
+            imagen: imagen,
+            descripcion: descripcion,
+          };
+          if (guardarProducto.innerText === "Actualizar") {
+            modificarProducto(objeto, ref);
+          }
+        });
+    }
+  });
+
+  const modificarProducto = async (obj, id) => {
+    const refer = await doc(productosColeccion, id);
+    await updateDoc(refer, obj);
+    informacion.innerHTML = `<p class='bien'>Producto modificado correctamente.</p>`;
+    plantillas.borrar(informacion);
+  };
+
+  //Eliminar producto.
+  divProductos.addEventListener('click', async (e) => {
+    let ref = e.target.id;
+    if (e.target.classList.contains('btnEliminar')) {
+      borrarProducto(ref);
+    }
+  });
+
+  const borrarProducto = async (id) => {
+    const resultado = await deleteDoc(doc(productosColeccion, id));
+    informacion.innerHTML = `<p class='bien'>Producto borrado con éxito.</p>`;
+    plantillas.borrar(informacion);
+  };
 
   //Scroll al inicio.
   subir.addEventListener("click", (e) => {
     scroll({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   });
-
 };
